@@ -2,11 +2,15 @@ const express = require("express");
 const router = express.Router();
 const equipamentosController = require("../controllers/equipamentosController");
 
+
+
+
 router.get("/", async function (req, res, next) {
   try {
     let equipamentos = await equipamentosController.getAll();
     res.status(200).send({ equipamentos });
   } catch (e) {
+    total;
     res.status(500).send("erro na solicitacao");
   }
 });
@@ -44,7 +48,7 @@ router.delete("/delete/:id", async function (req, res, next) {
   try {
     let deleteId = await equipamentosController.deleteId(id);
     if (deleteId) {
-      res.status(200).json("deletado com sucesso");
+      res.status(200).json(`Equipamento ${id}, deletado com sucesso!!!`);
     }
   } catch (e) {
     console.log(e);
